@@ -1,14 +1,37 @@
-def insertsort(arr):
-    n = len(arr)
-    for i in range(n):
-        key = arr[i]
-        j = i-1
-        while j>=0 and key < arr[j]:
-            arr[j+1] = arr[j]
-            j -= 1
-        arr[j+1] = key
-    return arr
+"""
+堆排序：
+1、堆是完全二叉树
+2、重构树
+3、
+"""
+
+def heapify(tree,n,i):
+    c1 = 2*i + 1
+    c2 = 2*i + 2
+    max_index = i
+    if c1 < n and tree[max_index] < tree[c1]:
+        max_index = c1
+    if c2 < n and tree[max_index] < tree[c2]:
+        max_index =c2
+    if i != max_index:
+        tree[i],tree[max_index] = tree[max_index],tree[i]
+        heapify(tree,n,max_index)
+
+def build_heap(tree,n):
+    last_node = n-1
+    parent = int(((last_node - 1) / 2))
+    for i in range(parent,-1,-1):
+        heapify(tree,n,i)
+    return tree
+
+def heap_sort(tree,n):
+    build_heap(tree,n)
+    for i in range(n-1,-1,-1):
+        tree[i],tree[0] = tree[0],tree[i]
+        heapify(tree,i,0)
+    return tree
 
 if __name__ == "__main__":
-    arr = [1,2,3,5,65,76,32,34,54,13]
-    print(insertsort(arr))
+    tree = [1,2,3,5,65,76,32,34,54,13]
+    tree = heap_sort(tree,len(tree))
+    print(tree)
