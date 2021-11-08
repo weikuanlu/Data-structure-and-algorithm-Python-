@@ -6,7 +6,7 @@ def select_sort(arr):
     n = len(arr) # 数组长度
     for i in range(n-1): # 选择前n-1个元素
         min_index = i # 假设为最小元素
-        for j in range(i,n): # 依次选择后面的元素，与其比较
+        for j in range(i+1,n): # 依次选择后面的元素，与其比较
             if arr[min_index] > arr[j]: # 如果最小元素大于 后面的元素
                 min_index = j # 更新最小值 下标
 
