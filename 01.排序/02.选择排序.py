@@ -1,17 +1,19 @@
 """
-选择排序：
+选择排序：不稳定排序
     时间复杂度：O(n^2)
 """
-def sellectsort(arr_num,n):
-    for i in range(n-1):
-        min_index = i
-        for j in range(i+1,n):
-            if arr_num[min_index] > arr_num[j]:
-                min_index = j
-        arr_num[min_index], arr_num[i] = arr_num[i], arr_num[min_index]
-    return arr_num
+def select_sort(arr):
+    n = len(arr) # 数组长度
+    for i in range(n-1): # 选择前n-1个元素
+        min_index = i # 假设为最小元素
+        for j in range(i,n): # 依次选择后面的元素，与其比较
+            if arr[min_index] > arr[j]: # 如果最小元素大于 后面的元素
+                min_index = j # 更新最小值 下标
+
+        if i != min_index: # 将实际最小元素 与 最初假设的最小元素 交换
+            arr[min_index],arr[i] = arr[i],arr[min_index]
 
 if __name__ == "__main__":
-    arr = [1,2,3,5,3,65,76,32,34,54,13]
-    arr = sellectsort(arr,len(arr))
+    arr = [1, 2, 3, 5, 6, 65, 76, 32, 34, 54, 13]
+    select_sort(arr)
     print(arr)
