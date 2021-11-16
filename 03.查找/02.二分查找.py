@@ -1,3 +1,7 @@
+"""
+二分查找：
+	时间复杂度：O(logn)
+"""
 def binary_search(arr,l,r,x):
 	if l <= r:
 		m = int((l+r)/2)
