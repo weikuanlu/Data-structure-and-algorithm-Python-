@@ -4,7 +4,6 @@ BFS(广度优先搜索)：是一种对图进行搜索的算法。
     假设我们一开始位于某个顶点（即起点），此时并不知道图的整体结构，而我们的目的是从起点开始顺着边搜索，直到到达指定顶点（即终点）。
     在此过程中每走到一个顶点，就会判断一次它是否为终点。广度优先搜索会优先从离起点近的顶点开始搜索。
 """
-
 # 定义一个图
 graph = {
     "A":["B","C"],
@@ -23,17 +22,20 @@ def BFS(graph,start):
     path = {}
     path[start] = None
     while len(queue) > 0:
-        key = queue.pop(0)
-        b = graph[key]
-        for m in b:
+        vertex = queue.pop(0)
+        nodes = graph[vertex]
+        for m in nodes:
             if m not in seen:
                 queue.append(m)
                 seen.add(m)
-                path[m] = key
-        print(key)
+                path[m] = vertex
+        # print(vertex)
     return path
 
 path = BFS(graph,"A")
-# print(path)
-for key,value in path.items():
-    print(f"{key}:{value}")
+
+"""想看从A到F的路线 """
+v = "F"
+while v != None:
+    print(v)
+    v = path[v]

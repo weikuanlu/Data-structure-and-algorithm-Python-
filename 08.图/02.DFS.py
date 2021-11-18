@@ -19,13 +19,22 @@ def DFS(graph,start):
     stack.append(start)
     seen = set()
     seen.add(start)
-
-    while len(stack)>0:
-        key = stack.pop()
-        b = graph[key]
-        for m in b:
+    path = {start:None}
+    while (len(stack) > 0):
+        vertex = stack.pop()
+        nodes = graph[vertex]
+        for m in nodes:
             if m not in seen:
                 stack.append(m)
                 seen.add(m)
-        print(key)
-DFS(graph,"B")
+                path[m] = vertex
+        # print(vertex)
+    return path
+
+path = DFS(graph,"A")
+
+""" 看A到F的路径 """
+v = "F"
+while v != None:
+    print(v)
+    v = path[v]
