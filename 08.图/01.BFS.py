@@ -19,8 +19,7 @@ def BFS(graph,start):
     queue.append(start)
     seen = set() # 创建集合，避免让元素重复进入队列
     seen.add(start)
-    path = {}
-    path[start] = None
+    path = {start:None}
     while len(queue) > 0:
         vertex = queue.pop(0)
         nodes = graph[vertex]
